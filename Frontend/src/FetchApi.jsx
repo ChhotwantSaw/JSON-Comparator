@@ -17,7 +17,7 @@ export default async function FetchApi(url,method,body,token,headers) {
     console.log(import.meta.env.VITE_BACKEND_URL);
     try {
         const response = await axios({
-          url:import.meta.env.VITE_BACKEND_URL,
+          url:`${import.meta.env.VITE_BACKEND_URL}/proxy`,
           method:'POST',
           data: {
             "url":url,
@@ -36,7 +36,7 @@ export default async function FetchApi(url,method,body,token,headers) {
         console.log(response);
         return response.data;
       } catch (error) {
-        // console.error("API Request Error:", error);
+        console.error("API Request Error:", error);
         return error.response;
       }
   }
