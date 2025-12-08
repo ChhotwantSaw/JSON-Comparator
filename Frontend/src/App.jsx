@@ -1,7 +1,6 @@
 import { useState } from "react";
 import FetchApi from './FetchApi';
 import CompareJSON from './CompareJSON.jsx';
-import axios from "axios";
 
 export default function App() {
   const [form, setForm] = useState({
