@@ -55,54 +55,6 @@ export default function App() {
 
 
 
-  // const sendRequest = async (column) => {
-  //   let endpoint = form[`endpoint${column}`];
-  //   let token = form[`token${column}`];
-  //   let headersJSON = form[`headers${column}`];
-  //   let method = form[`method${column}`];
-  //   let body = form[`body${column}`];
-
-  //   let parsedHeaders = {};
-
-  //   // Safely parse JSON headers
-  //   try {
-  //     parsedHeaders = headersJSON ? JSON.parse(headersJSON) : {};
-  //   } catch (err) {
-  //     setForm((prev) => ({
-  //       ...prev,
-  //       [`response${column}`]: "Invalid Header JSON: " + err.message,
-  //     }));
-  //     return;
-  //   }
-
-  //   // Final headers
-  //   const finalHeaders = {
-  //     "Content-Type": "application/json",
-  //     Authorization: token ? `Bearer ${token}` : "",
-  //     ...parsedHeaders,
-  //   };
-
-  //   try {
-  //     const options = { method, headers: finalHeaders };
-
-  //     if (method === "POST") options.body = body;
-
-  //     const res = await fetch(endpoint, options);
-  //     const data = await res.text();
-
-  //     setForm((prev) => ({ ...prev, [`response${column}`]: data }));
-  //   } catch (err) {
-  //     setForm((prev) => ({
-  //       ...prev,
-  //       [`response${column}`]: "Error: " + err.message,
-  //     }));
-  //   }
-  // };
-
-  // setForm.response1=
-  // console.log(form);
-
-  // setForm((prev) => ({ ...prev, [`response${column}`]: res }));
 console.log(form.compare);
   const handleCompare = function(){
      const result=CompareJSON(form.response1,form.response2);

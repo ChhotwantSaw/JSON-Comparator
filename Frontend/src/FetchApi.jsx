@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
   /**
  * Universal HTTP request function using Axios
  * 
@@ -13,9 +14,10 @@ import axios from 'axios';
 
 export default async function FetchApi(url,method,body,token,headers) {
     headers={"Content-Type": "application/json", ...headers};
+    console.log(import.meta.env.VITE_BACKEND_URL);
     try {
         const response = await axios({
-          url:BACKEND_URL,
+          url:import.meta.env.VITE_BACKEND_URL,
           method:'POST',
           data: {
             "url":url,
@@ -31,7 +33,7 @@ export default async function FetchApi(url,method,body,token,headers) {
           // }
         });
         // console.log('hi');
-        // console.log(response);
+        console.log(response);
         return response.data;
       } catch (error) {
         // console.error("API Request Error:", error);
