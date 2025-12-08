@@ -22,7 +22,7 @@ app.post("/proxy", async (req, res) => {
     try {
         const {
           url,
-          method = "GET",
+          method = "GET", 
           headers = {},
           body = {},
           params = {}
