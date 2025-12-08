@@ -15,7 +15,7 @@ export default async function FetchApi(url,method,body,token,headers) {
     headers={"Content-Type": "application/json", ...headers};
     try {
         const response = await axios({
-          url:'http://localhost:3000/proxy',
+          url:BACKEND_URL,
           method:'POST',
           data: {
             "url":url,
