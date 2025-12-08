@@ -128,7 +128,7 @@ console.log(form.compare);
               Send
             </button>
 
-            {Object.keys(form.response1).length !== 0 && (
+            {Object.keys(form).find(key => key === "response1").length !== 0 && (
               <div style={styles.responseBox}>
                 <strong>Response:</strong>
                 <pre>{JSON.stringify(form.response1,null,2)}</pre>
@@ -200,7 +200,7 @@ console.log(form.compare);
               Send
             </button>
 
-            {Object.keys(form.response2).length !== 0  && (
+            {Object.keys(form).find(key => key === "response2").length !== 0   && (
               <div style={styles.responseBox}>
                 <strong>Response:</strong>
                 <pre>{JSON.stringify(form.response2,null,2)}</pre>

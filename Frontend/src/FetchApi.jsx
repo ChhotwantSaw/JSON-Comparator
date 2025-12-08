@@ -22,15 +22,8 @@ export default async function FetchApi(url,method,body,token,headers) {
           data: {
             "url":url,
             "method":method,
-            // "headers":headers,
-            // "body":{...body}
           }
           
-          // headers: {
-          //   "Content-Type": "application/json",     // default
-          //   ...(token ? `Bearer ${token}` : ""), // add token if provided
-          //   ...headers                     // allow user to add additional headers
-          // }
         });
         // console.log('hi');
         console.log(response);
