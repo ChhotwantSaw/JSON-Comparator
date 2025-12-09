@@ -2,15 +2,22 @@
     "version": 2,
     "builds": [
       {
-        "src": "backend/index.js",
+        "src": "*.js",
         "use": "@vercel/node"
       }
     ],
     "routes": [
       {
-        "src": "/(.*)",
-        "dest": "backend/index.js"
-      }
-    ],
-    "buildCommand": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend"
-  }
+         "src": "/(.*)",
+         "dest": "/",
+          "methods": ["GET","POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+          "headers": {
+             "Access-Control-Allow-Origin": "*",
+             "Access-Control-Allow-Credentials": "true",
+             "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+         }
+     }
+   ]
+}
+
+
