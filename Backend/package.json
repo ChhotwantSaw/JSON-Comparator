@@ -4,14 +4,19 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    
     "test": "echo \"Error: no test specified\" && exit 1",
-    "postinstall": "cd ../frontend && npm install && npm run build",
-    "start": "nodemon index.js"
+    "dev": "nodemon ./api/app.js"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChhotwantSaw/JSON-Comparator.git"
+  },
+  "author": "Chhotwant Saw",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChhotwantSaw/JSON-Comparator/issues"
+  },
+  "homepage": "https://github.com/ChhotwantSaw/JSON-Comparator#readme",
   "dependencies": {
     "axios": "^1.13.2",
     "cors": "^2.8.5",
