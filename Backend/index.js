@@ -12,7 +12,8 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
-           // Allow frontend to call backend
+app.options("*", cors()); // ✅ REQUIRED         // Allow frontend to call backend
+          
 app.use(express.json());    // Parse JSON body 
 
 // 🌟 Universal Proxy Endpoint
@@ -73,6 +74,8 @@ app.post("/proxy", async (req, res) => {
         });
       }
 });
+
+module.exports=app;
 
 
 
