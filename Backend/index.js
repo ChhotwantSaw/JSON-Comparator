@@ -4,39 +4,11 @@ const cors = require("cors");
 const dotenv = require("dotenv");
 
 dotenv.config();
-
 const app = express();
-app.use(cors({
-  origin: "https://json-comparator-frontend.vercel.app",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true
-}));
-app.options("*", cors()); // ✅ REQUIRED         // Allow frontend to call backend
+app.use(express.json());  
 
+app.use(cors()); // ✅ REQUIRED         // Allow frontend to call backend
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "https://json-comparator-frontend.vercel.app");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
-  );
-  next();
-});
-
-          
-app.use(express.json());    // Parse JSON body 
-
-// 🌟 Universal Proxy Endpoint
-// app.use((req, res, next) => {
-//     res.setHeader(
-//       "Content-Security-Policy",
-//       "default-src 'self' http://localhost:3000 http://localhost:5000; connect-src *;"
-//     );
-//     next();
-//   });
 app.post("/proxy", async (req, res) => {
     
     try {
@@ -86,9 +58,13 @@ app.post("/proxy", async (req, res) => {
           error: error.response.data,
         });
       }
-});
 
-module.exports=app;
+      
+});
+// app.listen(5134,()=>{
+//   console.log("Server Running")
+// })
+
 
 
 
