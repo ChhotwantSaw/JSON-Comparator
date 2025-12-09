@@ -7,9 +7,20 @@ dotenv.config();
 const app = express();
 app.use(express.json());  
 
-app.use(cors()); // ✅ REQUIRED         // Allow frontend to call backend
+app.use(cors()); 
 
-app.post("/proxy", async (req, res) => {
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
+
+
+app.get("/api/health", (req, res) => {
+  res.json({ status: "Proxy Backend Running on Vercel ✅" });
+});
+
+app.post("/api/proxy", async (req, res) => {
     
     try {
         const {
@@ -51,20 +62,19 @@ app.post("/proxy", async (req, res) => {
         });
     
       } catch (error) {
-        console.error("Proxy Error:", error.response);
-    
-        return res.status(error.status).json({
-        //   message: "Proxy Server Failed",
-          error: error.response.data,
+        console.error("Proxy Error:", error?.response?.data || error.message);
+
+    return res.status(error?.response?.status || 500).json({
+      error: error?.response?.data || "Proxy Server Failed"
         });
       }
 
       
 });
-// app.listen(5134,()=>{
-//   console.log("Server Running")
-// })
-
+app.listen(5134,()=>{
+  console.log("Server Running")
+})
+module.exports=app;
 
 
 
