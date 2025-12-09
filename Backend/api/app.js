@@ -17,11 +17,11 @@ app.use(
   })
 );
 
-app.get("/api/health", (req, res) => {
+app.get("/health", (req, res) => {
   res.json({ status: "Proxy Backend Running on Vercel ✅" });
 });
 
-app.post("/api/proxy", async (req, res) => {
+app.post("/proxy", async (req, res) => {
   try {
     const {
       url,
@@ -59,9 +59,9 @@ app.post("/api/proxy", async (req, res) => {
   }
 });
 
-if (!process.env.VERCEL) {
-  const PORT = 5134;
-  app.listen(PORT, () => console.log("Local Backend running on: " + PORT));
-}
+// if (!process.env.VERCEL) {
+//   const PORT = 5134;
+//   app.listen(PORT, () => console.log("Local Backend running on: " + PORT));
+// }
 
 module.exports = app;
