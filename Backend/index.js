@@ -6,8 +6,14 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-app.use(cors());            // Allow frontend to call backend
-app.use(express.json());    // Parse JSON body
+app.use(cors({
+  origin: "https://json-comparator-frontend.vercel.app",
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
+           // Allow frontend to call backend
+app.use(express.json());    // Parse JSON body 
 
 // 🌟 Universal Proxy Endpoint
 // app.use((req, res, next) => {
