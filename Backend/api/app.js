@@ -59,9 +59,9 @@ app.post("/proxy", async (req, res) => {
   }
 });
 
-// if (!process.env.VERCEL) {
-//   const PORT = 5134;
-//   app.listen(PORT, () => console.log("Local Backend running on: " + PORT));
-// }
+if (!process.env.VERCEL) {
+  const PORT = 5134;
+  app.listen(PORT, () => console.log("Local Backend running on: " + PORT));
+}
 
 module.exports = app;
