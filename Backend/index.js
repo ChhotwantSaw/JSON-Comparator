@@ -12,6 +12,21 @@ app.use(cors({
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true
 }));
+// Source - https://stackoverflow.com/q
+// Posted by UnkownSomeone
+// Retrieved 2025-12-10, License - CC BY-SA 4.0
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "https://json-comparator-frontend.vercel.app");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+  );
+  next();
+});
+
 app.options("*", cors()); // ✅ REQUIRED         // Allow frontend to call backend
           
 app.use(express.json());    // Parse JSON body 
