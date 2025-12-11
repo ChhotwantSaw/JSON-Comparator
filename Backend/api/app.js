@@ -11,12 +11,14 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://json-comparator-frontend.vercel.app",
+    origin: "*",
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
   })
 );
-
+app.get("/",(req,res)=>{
+    res.send("Sever Running....")
+})
 app.get("/health", (req, res) => {
   res.json({ status: "Proxy Backend Running on Vercel ✅" });
 });
