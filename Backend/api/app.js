@@ -30,11 +30,17 @@ app.post("/proxy", async (req, res) => {
       method = "GET",
       headers = {},
       body = {},
-      params = {}
+      params = {},
+      token=""
     } = req.body;
 
     if (!url) {
       return res.status(400).json({ error: "Provide Valid URL" });
+    }
+    if(token){
+        headers={Authorization: `Bearer ${token}`,
+        ...headers
+        }
     }
 
     const response = await axios({

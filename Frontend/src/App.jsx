@@ -7,13 +7,15 @@ export default function App() {
     endpoint1: "",
     token1: "",
     headers1: "",
+    param1:"",
     method1: "GET",
-    body1: "",
+    body1: {},
     response1: {},
 
     endpoint2: "",
     token2: "",
     headers2: "",
+    param2:"",
     method2: "GET",
     body2: {},
     response2: {},
@@ -29,7 +31,7 @@ export default function App() {
   const handleSubmitIBM=async(column)=>{
     try{
       // console.log('body1',form.body1)
-    const res=await FetchApi(form[`endpoint${column}`],form[`method${column}`],form[`body${column}`],form[`token${column}`],form[`headers${column}`]);
+    const res=await FetchApi(form[`endpoint${column}`],form[`method${column}`],form[`body${column}`],form[`token${column}`],form[`headers${column}`],form[`param${column}`]  );
     // console.log(res);
     setForm((prev) => ({ ...prev, [`response${column}`]: res }));
     } catch(err){
@@ -42,7 +44,7 @@ export default function App() {
 
   const handleSubmitKong=async(column)=>{
     try{
-    const res=await FetchApi(form[`endpoint${column}`],form[`method${column}`],form[`body${column}`],form[`token${column}`],form[`headers${column}`]);
+    const res=await FetchApi(form[`endpoint${column}`],form[`method${column}`],form[`body${column}`],form[`token${column}`],form[`headers${column}`],);
     // console.log(res);
     setForm((prev) => ({ ...prev, [`response${column}`]: res }));
     } catch(err){
@@ -96,6 +98,15 @@ console.log(form.compare);
               onChange={handleChange}
               style={styles.textarea}
             />
+            <label>Params 1 (JSON)</label>
+<textarea
+  name="param1"
+  placeholder='{"id":"123", "type":"x"}'
+  value={form.param1}
+  onChange={handleChange}
+  style={styles.textarea}
+/>
+
 
             <label>HTTP Method</label>
             <select
@@ -168,6 +179,14 @@ console.log(form.compare);
               onChange={handleChange}
               style={styles.textarea}
             />
+            <label>Params 2 (JSON)</label>
+<textarea
+  name="param2"
+  placeholder='{"id":"123", "type":"x"}'
+  value={form.param2}
+  onChange={handleChange}
+  style={styles.textarea}
+/>
 
             <label>HTTP Method</label>
             <select
