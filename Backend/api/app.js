@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "*",
+    origin: "https://json-comparator-frontend.vercel.app",
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
   })
